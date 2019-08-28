@@ -6,6 +6,8 @@ import robocode.*;
 
 public class LaboRobot extends JuniorRobot
 {
+	IBattleStrategy battleStrategy = new BattleStrategyCatedra();
+
 	@Override	
 	public void run() {
 
@@ -13,11 +15,7 @@ public class LaboRobot extends JuniorRobot
 
 
 		while(true) {
-		
-			ahead(100);
-			turnGunRight(360);
-			back(100);
-			turnGunRight(360);
+			battleStrategy.tick(this);
 		}
 	}
 
@@ -26,7 +24,7 @@ public class LaboRobot extends JuniorRobot
 	 */
 	@Override
 	public void onScannedRobot() {
-		fire(1);
+		battleStrategy.onScannedRobot(this);
 	}
 
 	/**
@@ -34,7 +32,7 @@ public class LaboRobot extends JuniorRobot
 	 */
 	@Override
 	public void onHitByBullet() {
-		back(10);
+		battleStrategy.onHitByBullet(this);
 	}
 	
 	/**
@@ -42,6 +40,6 @@ public class LaboRobot extends JuniorRobot
 	 */
 	@Override
 	public void onHitWall() {
-		back(20);
+		battleStrategy.onHitWall(this);
 	}	
 }
