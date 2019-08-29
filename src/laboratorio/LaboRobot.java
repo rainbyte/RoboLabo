@@ -8,13 +8,13 @@ import robocode.*;
 
 public class LaboRobot extends AdvancedRobot
 {
-	IBattleStrategy battleStrategy = new BattleStrategyCatedra();
+	IBattleStrategy battleStrategy = new BattleStrategyWalls();
 
 	@Override	
 	public void run() {
 
-		setColors(Color.ORANGE, Color.BLUE, Color.WHITE, Color.YELLOW, Color.BLACK);
-
+		setColors(Color.RED, Color.RED, Color.WHITE, Color.RED, Color.BLACK);
+		battleStrategy.prepare(this);
 		while(true) {
 			battleStrategy.tick(this);
 		}
@@ -26,7 +26,7 @@ public class LaboRobot extends AdvancedRobot
 	@Override
 	public void onScannedRobot(ScannedRobotEvent e) {
 		battleStrategy.onScannedRobot(this, e);
-	}
+	}	
 
 	/**
 	 * onHitByBullet: What to do when you're hit by a bullet
@@ -43,4 +43,8 @@ public class LaboRobot extends AdvancedRobot
 	public void onHitWall(HitWallEvent e) {
 		battleStrategy.onHitWall(this, e);
 	}	
+	
+	public void onHitRobot(HitRobotEvent e) {
+		battleStrategy.onHitRobot(this, e);
+	}
 }

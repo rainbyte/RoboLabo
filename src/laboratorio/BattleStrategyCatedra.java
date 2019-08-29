@@ -1,6 +1,7 @@
 package laboratorio;
 
 import robocode.HitByBulletEvent;
+import robocode.HitRobotEvent;
 import robocode.HitWallEvent;
 import robocode.ScannedRobotEvent;
 
@@ -14,6 +15,9 @@ public class BattleStrategyCatedra implements IBattleStrategy {
         r.turnGunRight(360);
         r.back(100);
         r.turnGunRight(360);
+        if(r.getEnergy() < 50) {
+        	r.battleStrategy = new BattleStrategyWalls();
+        }
     }
 
     @Override
@@ -30,4 +34,10 @@ public class BattleStrategyCatedra implements IBattleStrategy {
     public void onHitWall(LaboRobot r, HitWallEvent e) {
         r.back(20);
     }
+
+	@Override
+	public void onHitRobot(LaboRobot r, HitRobotEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
 }
