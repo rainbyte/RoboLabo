@@ -1,5 +1,7 @@
 package laboratorio;
 
+import robocode.HitByBulletEvent;
+import robocode.HitWallEvent;
 import robocode.ScannedRobotEvent;
 
 /**
@@ -11,7 +13,7 @@ public interface IBattleStrategy {
 
     void onScannedRobot(LaboRobot r, ScannedRobotEvent e);
 
-    void onHitByBullet(LaboRobot r);
+    void onHitByBullet(LaboRobot r, HitByBulletEvent e);
 
-    void onHitWall(LaboRobot r);
+    void onHitWall(LaboRobot r, HitWallEvent e);
 }

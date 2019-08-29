@@ -1,18 +1,19 @@
 package laboratorio;
+import java.awt.Color;
+
 import robocode.*;
 
 // API help : http://robocode.sourceforge.net/docs/robocode/robocode/JuniorRobot.html
 
 
-public class LaboRobot extends JuniorRobot
+public class LaboRobot extends AdvancedRobot
 {
 	IBattleStrategy battleStrategy = new BattleStrategyCatedra();
 
 	@Override	
 	public void run() {
 
-		setColors(orange, blue, white, yellow, black);
-
+		setColors(Color.ORANGE, Color.BLUE, Color.WHITE, Color.YELLOW, Color.BLACK);
 
 		while(true) {
 			battleStrategy.tick(this);
@@ -23,23 +24,23 @@ public class LaboRobot extends JuniorRobot
 	 * onScannedRobot: What to do when you see another robot
 	 */
 	@Override
-	public void onScannedRobot() {
-		battleStrategy.onScannedRobot(this);
+	public void onScannedRobot(ScannedRobotEvent e) {
+		battleStrategy.onScannedRobot(this, e);
 	}
 
 	/**
 	 * onHitByBullet: What to do when you're hit by a bullet
 	 */
 	@Override
-	public void onHitByBullet() {
-		battleStrategy.onHitByBullet(this);
+	public void onHitByBullet(HitByBulletEvent e) {
+		battleStrategy.onHitByBullet(this, e);
 	}
 	
 	/**
 	 * onHitWall: What to do when you hit a wall
 	 */
 	@Override
-	public void onHitWall() {
-		battleStrategy.onHitWall(this);
+	public void onHitWall(HitWallEvent e) {
+		battleStrategy.onHitWall(this, e);
 	}	
 }
