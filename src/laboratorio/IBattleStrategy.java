@@ -10,6 +10,11 @@ import robocode.HitRobotEvent;
  */
 public interface IBattleStrategy {
 
+    final int NORTH = 0; 
+    final int EAST = 90;
+    final int SOUTH = 180;
+    final int WEST = 270;
+
     void tick(LaboRobot r);
 
     void onScannedRobot(LaboRobot r, ScannedRobotEvent e);

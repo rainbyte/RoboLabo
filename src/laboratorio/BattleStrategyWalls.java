@@ -9,14 +9,36 @@ public class BattleStrategyWalls implements IBattleStrategy {
 	boolean peek; // Don't turn if there's a robot there
 	double moveAmount; // How much to move
 
+	private void recalculateMoveAmount(LaboRobot r) {
+		int heading = (int) Math.floor(r.getHeading());
+		switch (heading) {
+			case NORTH:
+				moveAmount = r.getBattleFieldHeight() - (r.getY() + r.getHeight() + 1);
+				break;
+			case EAST:
+				moveAmount = r.getBattleFieldWidth() - (r.getX() + r.getWidth() + 1);
+				break;
+			case SOUTH:
+				moveAmount = r.getY() - (r.getHeight() + 1);
+				break;
+			default:
+				moveAmount = r.getX() - (r.getWidth() + 1);
+				break;
+		}		
+	}
+
 	@Override
 	public void tick(LaboRobot r) {
+		this.recalculateMoveAmount(r);
 		// Look before we turn when ahead() completes.
 		peek = true;
 		// Move up the wall
 		r.ahead((int) moveAmount);
 		// Don't look now
 		peek = false;
+
+		r.turnRight(90);
+
 	}
 
 	@Override
@@ -49,13 +71,13 @@ public class BattleStrategyWalls implements IBattleStrategy {
 
 	@Override
 	public void onHitWall(LaboRobot r, HitWallEvent e) {
-		r.turnRight(90);
+//		r.turnRight(90);
 	}
 
 	@Override
 	public void prepare(LaboRobot r) {
 		// Initialize moveAmount to the maximum possible for this battlefield.
-		moveAmount = Math.max(r.getBattleFieldWidth(), r.getBattleFieldHeight());
+//		moveAmount = Math.max(r.getBattleFieldWidth(), r.getBattleFieldHeight());
 		// Initialize peek to false
 		peek = false;
 
@@ -64,6 +86,7 @@ public class BattleStrategyWalls implements IBattleStrategy {
 		// getHeading() divided by 90.
 
 		r.turnLeft(r.getHeading() % 90);
+		this.recalculateMoveAmount(r);
 		r.ahead((int) moveAmount); // Turn the gun toturn right 90 degrees.
 		peek = true;
 		r.turnGunRight(90);
