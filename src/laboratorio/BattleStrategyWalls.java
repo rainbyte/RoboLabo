@@ -9,7 +9,7 @@ public class BattleStrategyWalls implements IBattleStrategy {
 	boolean peek; // Don't turn if there's a robot there
 	double moveAmount; // How much to move, but avoiding the walls
 
-	private void recalculateMoveAmount(LaboRobot r) {
+	private void recalculateMoveAmount(LaboRobot02 r) {
 		int heading = (int) Math.floor(r.getHeading());
 		switch (heading) {
 			case NORTH:
@@ -28,7 +28,7 @@ public class BattleStrategyWalls implements IBattleStrategy {
 	}
 
 	@Override
-	public void tick(LaboRobot r) {
+	public void tick(LaboRobot02 r) {
 		this.recalculateMoveAmount(r);
 		// Look before we turn when ahead() completes.
 		peek = true;
@@ -42,7 +42,7 @@ public class BattleStrategyWalls implements IBattleStrategy {
 	}
 
 	@Override
-	public void onScannedRobot(LaboRobot r, ScannedRobotEvent e) {
+	public void onScannedRobot(LaboRobot02 r, ScannedRobotEvent e) {
 		r.fire(5);
 		// Note that scan is called automatically when the robot is moving.
 		// By calling it manually here, we make sure we generate another scan event if
@@ -53,7 +53,7 @@ public class BattleStrategyWalls implements IBattleStrategy {
 		}
 	}
 
-	public void onHitRobot(LaboRobot r, HitRobotEvent e) {
+	public void onHitRobot(LaboRobot02 r, HitRobotEvent e) {
 		// If he's in front of us, set back up a bit.
 		if (e.getBearing() > -90 && e.getBearing() < 90) {
 			r.back(100);
@@ -64,18 +64,18 @@ public class BattleStrategyWalls implements IBattleStrategy {
 	}
 
 	@Override
-	public void onHitByBullet(LaboRobot r, HitByBulletEvent e) {
+	public void onHitByBullet(LaboRobot02 r, HitByBulletEvent e) {
 		// TODO Auto-generated method stub
 
 	}
 
 	@Override
-	public void onHitWall(LaboRobot r, HitWallEvent e) {
+	public void onHitWall(LaboRobot02 r, HitWallEvent e) {
 //		r.turnRight(90);
 	}
 
 	@Override
-	public void prepare(LaboRobot r) {
+	public void prepare(LaboRobot02 r) {
 		// Do not take extra precautions
 		peek = false;
 

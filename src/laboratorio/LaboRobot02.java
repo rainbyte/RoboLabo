@@ -6,7 +6,7 @@ import robocode.*;
 // API help : http://robocode.sourceforge.net/docs/robocode/robocode/JuniorRobot.html
 
 
-public class LaboRobot extends AdvancedRobot
+public class LaboRobot02 extends AdvancedRobot
 {
 	IBattleStrategy battleStrategy = new BattleStrategyWalls();
 
