@@ -7,7 +7,7 @@ import robocode.ScannedRobotEvent;
 
 public class BattleStrategyWalls implements IBattleStrategy {
 	boolean peek; // Don't turn if there's a robot there
-	double moveAmount; // How much to move
+	double moveAmount; // How much to move, but avoiding the walls
 
 	private void recalculateMoveAmount(LaboRobot r) {
 		int heading = (int) Math.floor(r.getHeading());
@@ -76,20 +76,16 @@ public class BattleStrategyWalls implements IBattleStrategy {
 
 	@Override
 	public void prepare(LaboRobot r) {
-		// Initialize moveAmount to the maximum possible for this battlefield.
-//		moveAmount = Math.max(r.getBattleFieldWidth(), r.getBattleFieldHeight());
-		// Initialize peek to false
+		// Do not take extra precautions
 		peek = false;
 
-		// turnLeft to face a wall.
-		// getHeading() % 90 means the remainder of
-		// getHeading() divided by 90.
-
+		// Face a wall and move the right amount
 		r.turnLeft(r.getHeading() % 90);
 		this.recalculateMoveAmount(r);
-		r.ahead((int) moveAmount); // Turn the gun toturn right 90 degrees.
+		r.ahead((int) moveAmount);
+
+		// Watch out for the enemies
 		peek = true;
 		r.turnGunRight(90);
-//		r.turnRight(90);
 	}
 }
