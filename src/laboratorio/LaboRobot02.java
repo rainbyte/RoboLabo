@@ -8,15 +8,22 @@ import robocode.*;
 
 public class LaboRobot02 extends AdvancedRobot
 {
-	IBattleStrategy battleStrategy = new BattleStrategyWalls();
+	public class StrategistWalls{
+		IBattleStrategy battleStrategy = new BattleStrategyWalls();
+		public IBattleStrategy getStrategy() {
+			return battleStrategy;
+		}
+	}
+	
+	StrategistWalls strategist = new StrategistWalls();
 
 	@Override	
 	public void run() {
 
 		setColors(Color.RED, Color.RED, Color.WHITE, Color.RED, Color.BLACK);
-		battleStrategy.prepare(this);
+		strategist.getStrategy().prepare(this);
 		while(true) {
-			battleStrategy.tick(this);
+			strategist.getStrategy().tick(this);
 		}
 	}
 
@@ -25,7 +32,7 @@ public class LaboRobot02 extends AdvancedRobot
 	 */
 	@Override
 	public void onScannedRobot(ScannedRobotEvent e) {
-		battleStrategy.onScannedRobot(this, e);
+		strategist.getStrategy().onScannedRobot(this, e);
 	}	
 
 	/**
@@ -33,7 +40,7 @@ public class LaboRobot02 extends AdvancedRobot
 	 */
 	@Override
 	public void onHitByBullet(HitByBulletEvent e) {
-		battleStrategy.onHitByBullet(this, e);
+		strategist.getStrategy().onHitByBullet(this, e);
 	}
 	
 	/**
@@ -41,10 +48,10 @@ public class LaboRobot02 extends AdvancedRobot
 	 */
 	@Override
 	public void onHitWall(HitWallEvent e) {
-		battleStrategy.onHitWall(this, e);
+		strategist.getStrategy().onHitWall(this, e);
 	}	
 	
 	public void onHitRobot(HitRobotEvent e) {
-		battleStrategy.onHitRobot(this, e);
+		strategist.getStrategy().onHitRobot(this, e);
 	}
 }

@@ -16,7 +16,7 @@ public class BattleStrategyCatedra implements IBattleStrategy {
         r.back(100);
         r.turnGunRight(360);
         if(r.getEnergy() < 50) {
-        	r.battleStrategy = new BattleStrategyWalls();
+        //	r.battleStrategy = new BattleStrategyWalls();
         }
     }
 

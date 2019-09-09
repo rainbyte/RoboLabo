@@ -39,7 +39,7 @@ public class BattleStrategyNew implements IBattleStrategy {
 		r.waitFor(new TurnCompleteCondition(r));
 		// then back to the top to do it all again
 		if (r.getEnergy() < 50) {
-			r.battleStrategy = new BattleStrategyCatedra();
+		//	r.battleStrategy = new BattleStrategyCatedra();
 		}
 	}
 
