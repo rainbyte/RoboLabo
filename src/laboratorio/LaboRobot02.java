@@ -8,14 +8,8 @@ import robocode.*;
 
 public class LaboRobot02 extends AdvancedRobot
 {
-	public class StrategistWalls{
-		IBattleStrategy battleStrategy = new BattleStrategyWalls();
-		public IBattleStrategy getStrategy() {
-			return battleStrategy;
-		}
-	}
 	
-	StrategistWalls strategist = new StrategistWalls();
+	Strategist strategist = new Strategist();
 
 	@Override	
 	public void run() {
