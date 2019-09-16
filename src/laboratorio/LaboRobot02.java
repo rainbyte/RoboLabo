@@ -1,6 +1,8 @@
 package laboratorio;
 import java.awt.Color;
 
+import laboratorio.IStrategist.Energy;
+import laboratorio.IStrategist.Position;
 import robocode.*;
 
 // API help : http://robocode.sourceforge.net/docs/robocode/robocode/JuniorRobot.html
@@ -9,15 +11,21 @@ import robocode.*;
 public class LaboRobot02 extends AdvancedRobot
 {
 	
-	Strategist strategist = new Strategist();
+	IStrategist strategist = new Strategist();
+
+	private IBattleStrategy withStrategy() {
+		Energy e = new Energy(this.getEnergy());
+		Position p = new Position(this.getX(), this.getY());
+		return strategist.getStrategy(strategist.genStatus(p, e));
+	}
 
 	@Override	
 	public void run() {
 
 		setColors(Color.RED, Color.RED, Color.WHITE, Color.RED, Color.BLACK);
-		strategist.getStrategy().prepare(this);
+		this.withStrategy().prepare(this);
 		while(true) {
-			strategist.getStrategy().tick(this);
+			this.withStrategy().tick(this);
 		}
 	}
 
@@ -26,7 +34,7 @@ public class LaboRobot02 extends AdvancedRobot
 	 */
 	@Override
 	public void onScannedRobot(ScannedRobotEvent e) {
-		strategist.getStrategy().onScannedRobot(this, e);
+		this.withStrategy().onScannedRobot(this, e);
 	}	
 
 	/**
@@ -34,7 +42,7 @@ public class LaboRobot02 extends AdvancedRobot
 	 */
 	@Override
 	public void onHitByBullet(HitByBulletEvent e) {
-		strategist.getStrategy().onHitByBullet(this, e);
+		this.withStrategy().onHitByBullet(this, e);
 	}
 	
 	/**
@@ -42,10 +50,10 @@ public class LaboRobot02 extends AdvancedRobot
 	 */
 	@Override
 	public void onHitWall(HitWallEvent e) {
-		strategist.getStrategy().onHitWall(this, e);
+		this.withStrategy().onHitWall(this, e);
 	}	
 	
 	public void onHitRobot(HitRobotEvent e) {
-		strategist.getStrategy().onHitRobot(this, e);
+		this.withStrategy().onHitRobot(this, e);
 	}
 }
