@@ -10,8 +10,6 @@ package laboratorio;
 
 import robocode.*;
 
-import java.awt.*;
-
 
 /**
  * Crazy - a sample robot by Mathew Nelson.
