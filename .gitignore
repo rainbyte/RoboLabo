@@ -1,1 +1,4 @@
 bin
+config/robocode.properties
+config/window.properties
+robots/robot.database
