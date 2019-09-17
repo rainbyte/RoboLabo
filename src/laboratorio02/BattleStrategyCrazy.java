@@ -19,7 +19,7 @@ import robocode.*;
  * @author Mathew A. Nelson (original)
  * @author Flemming N. Larsen (contributor)
  */
-public class BattleStrategyJuniorRobot extends AdvancedRobot implements IBattleStrategy{
+public class BattleStrategyCrazy extends AdvancedRobot implements IBattleStrategy{
 	boolean movingForward;
 
 	/**
@@ -97,8 +97,9 @@ public class BattleStrategyJuniorRobot extends AdvancedRobot implements IBattleS
 
 	@Override
 	public void onHitByBullet(LaboRobot02 r, HitByBulletEvent e) {
-		// TODO Auto-generated method stub
-
+		// Move ahead 100 and in the same time turn left papendicular to the bullet
+		r.turnLeft(90 - e.getBearing());
+		r.ahead(100);
 	}
 
 	@Override

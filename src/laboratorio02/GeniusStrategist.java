@@ -28,7 +28,7 @@ public class GeniusStrategist implements IStrategist{
     
     }
 
-    IBattleStrategy battleStrategy = new BattleStrategyJuniorRobot();
+    IBattleStrategy battleStrategy = new BattleStrategyCrazy();
 
     private static final GeniusStrategist INSTANCE = new GeniusStrategist();
 
