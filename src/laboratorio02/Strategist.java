@@ -1,9 +1,9 @@
-package laboratorio;
+package laboratorio02;
 
 /**
  * Strategist
  */
-public class GeniusStrategist implements IStrategist{
+public class Strategist implements IStrategist{
     /**
      * RobotStatus    
      */
@@ -28,13 +28,10 @@ public class GeniusStrategist implements IStrategist{
     
     }
 
-    IBattleStrategy battleStrategy = new BattleStrategyJuniorRobot();
+    IBattleStrategy battleStrategy = new BattleStrategyWalls();
 
     @Override
     public IBattleStrategy getStrategy(IRobotStatus rstatus) {
-        if(rstatus.getEnergy().value < 50){
-            this.battleStrategy = new BattleStrategyWalls();
-        }
         return battleStrategy;
     }
 

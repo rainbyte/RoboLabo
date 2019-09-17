@@ -1,8 +1,9 @@
-package laboratorio;
+package laboratorio02;
+
 import java.awt.Color;
 
-import laboratorio.IStrategist.Energy;
-import laboratorio.IStrategist.Position;
+import laboratorio02.IStrategist.Energy;
+import laboratorio02.IStrategist.Position;
 import robocode.*;
 
 // API help : http://robocode.sourceforge.net/docs/robocode/robocode/JuniorRobot.html
