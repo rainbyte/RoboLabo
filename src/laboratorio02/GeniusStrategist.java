@@ -30,6 +30,15 @@ public class GeniusStrategist implements IStrategist{
 
     IBattleStrategy battleStrategy = new BattleStrategyJuniorRobot();
 
+    private static final GeniusStrategist INSTANCE = new GeniusStrategist();
+
+    public static GeniusStrategist getInstance() {
+        return INSTANCE;
+    }
+
+    private GeniusStrategist() {
+    }
+
     @Override
     public IBattleStrategy getStrategy(IRobotStatus rstatus) {
         if(rstatus.getEnergy().value < 50){

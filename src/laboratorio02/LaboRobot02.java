@@ -12,7 +12,7 @@ import robocode.*;
 public class LaboRobot02 extends AdvancedRobot
 {
 	
-	IStrategist strategist = new Strategist();
+	IStrategist strategist = Strategist.getInstance();
 
 	private IBattleStrategy withStrategy() {
 		Energy e = new Energy(this.getEnergy());

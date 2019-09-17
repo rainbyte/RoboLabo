@@ -28,6 +28,15 @@ public class Strategist implements IStrategist{
     
     }
 
+    private static final Strategist INSTANCE = new Strategist();
+
+    public static Strategist getInstance() {
+        return INSTANCE;
+    }
+
+    private Strategist() {
+    }
+
     IBattleStrategy battleStrategy = new BattleStrategyWalls();
 
     @Override
