@@ -23,18 +23,6 @@ public class BattleStrategyCrazy extends AdvancedRobot implements IBattleStrateg
 	boolean movingForward;
 
 	/**
-	 * run: Crazy's main run function
-	 */
-
-
-	/**
-	 * onHitWall:  Handle collision with wall.
-	 */
-	public void onHitWall(HitWallEvent e) {
-		
-	}
-
-	/**
 	 * reverseDirection:  Switch from ahead to back & vice versa
 	 */
 	public void reverseDirection(AdvancedRobot r) {
@@ -45,20 +33,6 @@ public class BattleStrategyCrazy extends AdvancedRobot implements IBattleStrateg
 			r.setAhead(40000);
 			movingForward = true;
 		}
-	}
-
-	/**
-	 * onScannedRobot:  Fire!
-	 */
-	public void onScannedRobot(ScannedRobotEvent e) {
-		
-	}
-
-	/**
-	 * onHitRobot:  Back up!
-	 */
-	public void onHitRobot(HitRobotEvent e) {
-		
 	}
 
 	@Override
