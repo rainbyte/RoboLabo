@@ -32,9 +32,9 @@ public class BattleStrategyCatedra implements IBattleStrategy {
         r.back(20);
     }
 
-	@Override
-	public void onHitRobot(LaboRobot02 r, HitRobotEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
+    @Override
+    public void onHitRobot(LaboRobot02 r, HitRobotEvent e) {
+        // TODO Auto-generated method stub
+
+    }
 }
