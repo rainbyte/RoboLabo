@@ -1,5 +1,6 @@
 package laboratorio02;
 
+import robocode.AdvancedRobot;
 import robocode.HitByBulletEvent;
 import robocode.HitRobotEvent;
 import robocode.HitWallEvent;
@@ -9,7 +10,7 @@ public class BattleStrategyWalls implements IBattleStrategy {
 	boolean peek; // Don't turn if there's a robot there
 	double moveAmount; // How much to move, but avoiding the walls
 
-	private void recalculateMoveAmount(LaboRobot02 r) {
+	private void recalculateMoveAmount(AdvancedRobot r) {
 		int heading = (int) Math.floor(r.getHeading());
 		switch (heading) {
 			case NORTH:
@@ -28,7 +29,7 @@ public class BattleStrategyWalls implements IBattleStrategy {
 	}
 
 	@Override
-	public void tick(LaboRobot02 r) {
+	public void tick(AdvancedRobot r) {
 		this.recalculateMoveAmount(r);
 		// Look before we turn when ahead() completes.
 		peek = true;
@@ -42,7 +43,7 @@ public class BattleStrategyWalls implements IBattleStrategy {
 	}
 
 	@Override
-	public void onScannedRobot(LaboRobot02 r, ScannedRobotEvent e) {
+	public void onScannedRobot(AdvancedRobot r, ScannedRobotEvent e) {
 		r.fire(5);
 		// Note that scan is called automatically when the robot is moving.
 		// By calling it manually here, we make sure we generate another scan event if
@@ -53,7 +54,7 @@ public class BattleStrategyWalls implements IBattleStrategy {
 		}
 	}
 
-	public void onHitRobot(LaboRobot02 r, HitRobotEvent e) {
+	public void onHitRobot(AdvancedRobot r, HitRobotEvent e) {
 		// If he's in front of us, set back up a bit.
 		if (e.getBearing() > -90 && e.getBearing() < 90) {
 			r.back(100);
@@ -64,18 +65,18 @@ public class BattleStrategyWalls implements IBattleStrategy {
 	}
 
 	@Override
-	public void onHitByBullet(LaboRobot02 r, HitByBulletEvent e) {
+	public void onHitByBullet(AdvancedRobot r, HitByBulletEvent e) {
 		// TODO Auto-generated method stub
 
 	}
 
 	@Override
-	public void onHitWall(LaboRobot02 r, HitWallEvent e) {
+	public void onHitWall(AdvancedRobot r, HitWallEvent e) {
 //		r.turnRight(90);
 	}
 
 	@Override
-	public void prepare(LaboRobot02 r) {
+	public void prepare(AdvancedRobot r) {
 		// Do not take extra precautions
 		peek = false;
 

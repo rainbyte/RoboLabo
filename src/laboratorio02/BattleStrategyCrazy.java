@@ -37,7 +37,7 @@ public class BattleStrategyCrazy extends AdvancedRobot implements IBattleStrateg
 	/**
 	 * reverseDirection:  Switch from ahead to back & vice versa
 	 */
-	public void reverseDirection(LaboRobot02 r) {
+	public void reverseDirection(AdvancedRobot r) {
 		if (movingForward) {
 			r.setBack(40000);
 			movingForward = false;
@@ -62,7 +62,7 @@ public class BattleStrategyCrazy extends AdvancedRobot implements IBattleStrateg
 	}
 
 	@Override
-	public void tick(LaboRobot02 r) {
+	public void tick(AdvancedRobot r) {
 		// Tell the game we will want to move ahead 40000 -- some large number
 		r.setAhead(40000);
 		movingForward = true;
@@ -90,27 +90,27 @@ public class BattleStrategyCrazy extends AdvancedRobot implements IBattleStrateg
 	}
 
 	@Override
-	public void onScannedRobot(LaboRobot02 r, ScannedRobotEvent e) {
+	public void onScannedRobot(AdvancedRobot r, ScannedRobotEvent e) {
 		r.fire(1);
 
 	}
 
 	@Override
-	public void onHitByBullet(LaboRobot02 r, HitByBulletEvent e) {
+	public void onHitByBullet(AdvancedRobot r, HitByBulletEvent e) {
 		// Move ahead 100 and in the same time turn left papendicular to the bullet
 		r.turnLeft(90 - e.getBearing());
 		r.ahead(100);
 	}
 
 	@Override
-	public void onHitWall(LaboRobot02 r, HitWallEvent e) {
+	public void onHitWall(AdvancedRobot r, HitWallEvent e) {
 		// Bounce off!
 		reverseDirection(r);
 
 	}
 
 	@Override
-	public void onHitRobot(LaboRobot02 r, HitRobotEvent e) {
+	public void onHitRobot(AdvancedRobot r, HitRobotEvent e) {
 		// If we're moving the other robot, reverse!
 		if (e.isMyFault()) {
 			reverseDirection(r);

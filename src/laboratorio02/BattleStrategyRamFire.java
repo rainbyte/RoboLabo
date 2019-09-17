@@ -1,5 +1,6 @@
 package laboratorio02;
 
+import robocode.AdvancedRobot;
 import robocode.HitByBulletEvent;
 import robocode.HitRobotEvent;
 import robocode.HitWallEvent;
@@ -12,12 +13,12 @@ public class BattleStrategyRamFire implements IBattleStrategy {
     int turnDirection = 1;
 
     @Override
-    public void tick(LaboRobot02 r) {
+    public void tick(AdvancedRobot r) {
         r.turnRight(5 * turnDirection);
     }
 
     @Override
-    public void onScannedRobot(LaboRobot02 r, ScannedRobotEvent e) {
+    public void onScannedRobot(AdvancedRobot r, ScannedRobotEvent e) {
 		if (e.getBearing() >= 0) {
 			turnDirection = 1;
 		} else {
@@ -30,15 +31,15 @@ public class BattleStrategyRamFire implements IBattleStrategy {
     }
 
     @Override
-    public void onHitByBullet(LaboRobot02 r, HitByBulletEvent e) {
+    public void onHitByBullet(AdvancedRobot r, HitByBulletEvent e) {
     }
 
     @Override
-    public void onHitWall(LaboRobot02 r, HitWallEvent e) {
+    public void onHitWall(AdvancedRobot r, HitWallEvent e) {
     }
 
     @Override
-    public void onHitRobot(LaboRobot02 r, HitRobotEvent e) {
+    public void onHitRobot(AdvancedRobot r, HitRobotEvent e) {
         if (e.getBearing() >= 0) {
 			turnDirection = 1;
 		} else {

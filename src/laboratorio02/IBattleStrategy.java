@@ -1,5 +1,6 @@
 package laboratorio02;
 
+import robocode.AdvancedRobot;
 import robocode.HitByBulletEvent;
 import robocode.HitWallEvent;
 import robocode.ScannedRobotEvent;
@@ -15,15 +16,15 @@ public interface IBattleStrategy {
     final int SOUTH = 180;
     final int WEST = 270;
 
-    void tick(LaboRobot02 r);
+    void tick(AdvancedRobot r);
 
-    void onScannedRobot(LaboRobot02 r, ScannedRobotEvent e);
+    void onScannedRobot(AdvancedRobot r, ScannedRobotEvent e);
 
-    void onHitByBullet(LaboRobot02 r, HitByBulletEvent e);
+    void onHitByBullet(AdvancedRobot r, HitByBulletEvent e);
 
-    void onHitWall(LaboRobot02 r, HitWallEvent e);
+    void onHitWall(AdvancedRobot r, HitWallEvent e);
     
-    void onHitRobot(LaboRobot02 r, HitRobotEvent e);
+    void onHitRobot(AdvancedRobot r, HitRobotEvent e);
     
-    default void prepare(LaboRobot02 r) {}
+    default void prepare(AdvancedRobot r) {}
 }
