@@ -28,7 +28,7 @@ public class GeniusStrategist implements IStrategist{
     
     }
 
-    IBattleStrategy battleStrategy = new BattleStrategyCrazy();
+    IBattleStrategy battleStrategy = new BattleStrategyWalls();
 
     private static final GeniusStrategist INSTANCE = new GeniusStrategist();
 
@@ -42,7 +42,7 @@ public class GeniusStrategist implements IStrategist{
     @Override
     public IBattleStrategy getStrategy(IRobotStatus rstatus) {
         if(rstatus.getEnergy().value < 50){
-            this.battleStrategy = new BattleStrategyWalls();
+            this.battleStrategy = new BattleStrategyCrazy();
         }
         return battleStrategy;
     }

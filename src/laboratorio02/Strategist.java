@@ -37,7 +37,7 @@ public class Strategist implements IStrategist{
     private Strategist() {
     }
 
-    IBattleStrategy battleStrategy = new BattleStrategyWalls();
+    IBattleStrategy battleStrategy = new BattleStrategyVelociRobot();
 
     @Override
     public IBattleStrategy getStrategy(IRobotStatus rstatus) {
